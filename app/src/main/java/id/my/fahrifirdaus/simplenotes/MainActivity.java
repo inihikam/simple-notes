@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Array;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
         String username = pref.getString("KeyUser", "-");
         txtJudul.setText("Catatan: "+username);
+
+        gson = new GsonBuilder().create();
     }
 
     @Override
@@ -45,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
         for (Notes note : noteList){
             konten += "==============\n";
             konten += note.judul;
-            konten += "---\n";
+            konten += "\n---\n";
             konten += note.konten;
-            konten += "==============\n";
+            konten += "\n==============\n";
         }
         txtKonten.setText(konten);
     }
